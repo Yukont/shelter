@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using shelter;
 
-namespace shelter;
+namespace DAL.EF;
 
 public partial class ShelterContext : DbContext
 {
