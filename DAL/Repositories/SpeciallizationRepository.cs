@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class SpeciallizationRepository : BaseRepository<Speciallization>
     {
-        protected SpeciallizationRepository(DbContext dbContext) : base(dbContext)
+        internal SpeciallizationRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

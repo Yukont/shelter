@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class AdoptionStatusRepository : BaseRepository<AdoptionStatus>
     {
-        protected AdoptionStatusRepository(DbContext dbContext) : base(dbContext)
+        internal AdoptionStatusRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

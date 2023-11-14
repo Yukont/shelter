@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class ReviewRepository : BaseRepository<Review>
     {
-        protected ReviewRepository(DbContext dbContext) : base(dbContext)
+        internal ReviewRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

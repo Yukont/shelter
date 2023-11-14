@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class ClinicRepository : BaseRepository<Clinic>
     {
-        protected ClinicRepository(DbContext dbContext) : base(dbContext)
+        internal ClinicRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

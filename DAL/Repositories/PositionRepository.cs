@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class PositionRepository : BaseRepository<Position>
     {
-        protected PositionRepository(DbContext dbContext) : base(dbContext)
+        internal PositionRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class EventScheduleRepository : BaseRepository<EventSchedule>
     {
-        protected EventScheduleRepository(DbContext dbContext) : base(dbContext)
+        internal EventScheduleRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

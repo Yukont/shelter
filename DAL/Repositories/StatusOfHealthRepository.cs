@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class StatusOfHealthRepository : BaseRepository<StatusOfHealth>
     {
-        protected StatusOfHealthRepository(DbContext dbContext) : base(dbContext)
+        internal StatusOfHealthRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

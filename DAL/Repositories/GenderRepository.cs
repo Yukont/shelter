@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class GenderRepository : BaseRepository<Gender>
     {
-        protected GenderRepository(DbContext dbContext) : base(dbContext)
+        internal GenderRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class AppointmentRepository : BaseRepository<Appointment>
     {
-        protected AppointmentRepository(DbContext dbContext) : base(dbContext)
+        internal AppointmentRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

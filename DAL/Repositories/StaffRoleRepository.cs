@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class StaffRoleRepository : BaseRepository<StaffRole>
     {
-        protected StaffRoleRepository(DbContext dbContext) : base(dbContext)
+        internal StaffRoleRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

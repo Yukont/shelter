@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class ShelterInformationRepository : BaseRepository<ShelterInformation>
     {
-        protected ShelterInformationRepository(DbContext dbContext) : base(dbContext)
+        internal ShelterInformationRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class AnimalStatusRepository : BaseRepository<AnimalStatus>
     {
-        protected AnimalStatusRepository(DbContext dbContext) : base(dbContext)
+        internal AnimalStatusRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

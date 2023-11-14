@@ -12,7 +12,7 @@ namespace DAL.Repositories
     {
         protected readonly DbContext _dbContext;
 
-        protected BaseRepository(DbContext dbContext)
+        internal BaseRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
         }

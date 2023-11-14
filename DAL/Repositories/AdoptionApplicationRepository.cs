@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class AdoptionApplicationRepository : BaseRepository<AdoptionApplication>
     {
-        protected AdoptionApplicationRepository(DbContext dbContext) : base(dbContext)
+        internal AdoptionApplicationRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }

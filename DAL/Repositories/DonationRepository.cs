@@ -10,7 +10,7 @@ namespace DAL.Repositories
 {
     internal class DonationRepository : BaseRepository<Donation>
     {
-        protected DonationRepository(DbContext dbContext) : base(dbContext)
+        internal DonationRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }
