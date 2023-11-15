@@ -7,8 +7,9 @@ namespace DAL.EF;
 
 public partial class ShelterContext : DbContext
 {
-    public ShelterContext()
+    public ShelterContext(string connectionString)
     {
+        ConnectionString = connectionString;
     }
 
     public ShelterContext(DbContextOptions<ShelterContext> options)
