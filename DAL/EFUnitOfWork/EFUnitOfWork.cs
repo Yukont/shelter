@@ -42,56 +42,47 @@ namespace DAL.EFUnitOfWork
             db = new ShelterContext(connectionString);
         }
 
-        public IRepository<AdoptionApplicationRepository> AdoptionApplication => throw new NotImplementedException();
+        public AdoptionApplicationRepository AdoptionApplication => adoptionApplicationRepository ??= new AdoptionApplicationRepository(db);
 
-        public IRepository<AdoptionStatusRepository> AdoptionStatus => throw new NotImplementedException();
+        public AdoptionStatusRepository AdoptionStatus => adoptionStatusRepository ??= new AdoptionStatusRepository(db);
 
-        public IRepository<Animal> Animals
-        {
-            get
-            {
-                if (animalRepository == null)
-                    animalRepository = new AnimalRepository(db);
-                return animalRepository;
-            }
-        }
-        public IRepository<AnimalRepository> Animal => AnimalRepository ??= new AnimalRepository(db);
+        public AnimalRepository Animal => animalRepository ??= new AnimalRepository(db);
 
-        public IRepository<AnimalStatusRepository> AnimalStatus => throw new NotImplementedException();
+        public AnimalStatusRepository AnimalStatus => animalStatusRepository ??= new AnimalStatusRepository(db);
 
-        public IRepository<AppointmentRepository> Appointment => throw new NotImplementedException();
+        public AppointmentRepository Appointment => appointmentRepository ??= new AppointmentRepository(db);
 
-        public IRepository<ClinicRepository> Clinic => throw new NotImplementedException();
+        public  ClinicRepository Clinic => clinicRepository ??= new ClinicRepository(db);
 
-        public IRepository<DonationRepository> Donation => throw new NotImplementedException();
+        public DonationRepository Donation => donationRepository ??= new DonationRepository(db);
 
-        public IRepository<EventScheduleRepository> EventSchedule => throw new NotImplementedException();
+        public EventScheduleRepository EventSchedule => eventScheduleRepository ??= new EventScheduleRepository(db);
 
-        public IRepository<GenderRepository> Gender => throw new NotImplementedException();
+        public GenderRepository Gender => genderRepository ??= new GenderRepository(db);
 
-        public IRepository<PositionRepository> Position => throw new NotImplementedException();
+        public PositionRepository Position => positionRepository ??= new PositionRepository(db);
 
-        public IRepository<ReviewRepository> Review => throw new NotImplementedException();
+        public ReviewRepository Review => reviewRepository ??= new ReviewRepository(db);
 
-        public IRepository<ShelterInformationRepository> ShelterInformation => throw new NotImplementedException();
+        public ShelterInformationRepository ShelterInformation => shelterInformationRepository ??= new ShelterInformationRepository(db);
 
-        public IRepository<SpeciallizationRepository> Speciallization => throw new NotImplementedException();
+        public SpeciallizationRepository Speciallization => speciallizationRepository ??= new SpeciallizationRepository(db);
 
-        public IRepository<SpeciesRepository> Species => throw new NotImplementedException();
+        public SpeciesRepository Species => speciesRepository ??= new SpeciesRepository(db);
 
-        public IRepository<StaffRepository> Staff => throw new NotImplementedException();
+        public StaffRepository Staff => staffRepository ??= new StaffRepository(db);
 
-        public IRepository<StaffRoleRepository> StaffRole => throw new NotImplementedException();
+        public StaffRoleRepository StaffRole => staffRoleRepository ??= new StaffRoleRepository(db);
 
-        public IRepository<StatusOfHealthRepository> StatusOfHealth => throw new NotImplementedException();
+        public StatusOfHealthRepository StatusOfHealth => statusOfHealthRepository ??= new StatusOfHealthRepository(db);
 
-        public IRepository<UserRepository> User => throw new NotImplementedException();
+        public UserRepository User => userRepository ??= new UserRepository(db);
 
-        public IRepository<UserRoleRepository> UserRole => throw new NotImplementedException();
+        public UserRoleRepository UserRole => userRoleRepository ??= new UserRoleRepository(db);
 
-        public IRepository<UsersGenderRepository> UsersGender => throw new NotImplementedException();
+        public UsersGenderRepository UsersGender => usersGenderRepository ??= new UsersGenderRepository(db);
 
-        public IRepository<VeterinarianRepository> Veterinarian => throw new NotImplementedException();
+        public VeterinarianRepository Veterinarian => veterinarianRepository ??= new VeterinarianRepository(db);
 
         public void Dispose()
         {

@@ -9,27 +9,27 @@ namespace DAL.Interfaces
 {
     internal interface IUnitOfWork : IDisposable
     {
-        IRepository<AdoptionApplicationRepository> AdoptionApplication { get; }
-        IRepository<AdoptionStatusRepository> AdoptionStatus { get; }
-        IRepository<AnimalRepository> Animal { get; }
-        IRepository<AnimalStatusRepository> AnimalStatus { get; }
-        IRepository<AppointmentRepository> Appointment { get; }
-        IRepository<ClinicRepository> Clinic { get; }
-        IRepository<DonationRepository> Donation { get; }
-        IRepository<EventScheduleRepository> EventSchedule{ get; }
-        IRepository<GenderRepository> Gender { get; }
-        IRepository<PositionRepository> Position { get; }
-        IRepository<ReviewRepository> Review { get; }
-        IRepository<ShelterInformationRepository> ShelterInformation { get; }
-        IRepository<SpeciallizationRepository> Speciallization { get; }
-        IRepository<SpeciesRepository> Species { get; }
-        IRepository<StaffRepository> Staff { get; }
-        IRepository<StaffRoleRepository> StaffRole { get; }
-        IRepository<StatusOfHealthRepository> StatusOfHealth { get; }
-        IRepository<UserRepository> User { get; }
-        IRepository<UserRoleRepository> UserRole { get; }
-        IRepository<UsersGenderRepository> UsersGender { get; }
-        IRepository<VeterinarianRepository> Veterinarian { get; }
+        AdoptionApplicationRepository AdoptionApplication { get; }
+        AdoptionStatusRepository AdoptionStatus { get; }
+        AnimalRepository Animal { get; }
+        AnimalStatusRepository AnimalStatus { get; }
+        AppointmentRepository Appointment { get; }
+        ClinicRepository Clinic { get; }
+        DonationRepository Donation { get; }
+        EventScheduleRepository EventSchedule{ get; }
+        GenderRepository Gender { get; }
+        PositionRepository Position { get; }
+        ReviewRepository Review { get; }
+        ShelterInformationRepository ShelterInformation { get; }
+        SpeciallizationRepository Speciallization { get; }
+        SpeciesRepository Species { get; }
+        StaffRepository Staff { get; }
+        StaffRoleRepository StaffRole { get; }
+        StatusOfHealthRepository StatusOfHealth { get; }
+        UserRepository User { get; }
+        UserRoleRepository UserRole { get; }
+        UsersGenderRepository UsersGender { get; }
+        VeterinarianRepository Veterinarian { get; }
         void Save();
     }
 }
