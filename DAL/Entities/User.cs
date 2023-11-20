@@ -9,7 +9,7 @@ public partial class User
 
     public string Name { get; set; } = null!;
 
-    public int? IdUserRole { get; set; }
+    public int IdUserRole { get; set; }
 
     public string? Address { get; set; }
 
@@ -27,7 +27,7 @@ public partial class User
 
     public virtual UsersGender IdUserGenderNavigation { get; set; } = null!;
 
-    public virtual UserRole? IdUserRoleNavigation { get; set; }
+    public virtual UserRole IdUserRoleNavigation { get; set; }
 
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

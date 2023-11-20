@@ -9,13 +9,13 @@ public partial class Staff
 
     public string Name { get; set; } = null!;
 
-    public int? IdStaffRole { get; set; }
+    public int IdStaffRole { get; set; }
 
     public string Contacts { get; set; } = null!;
 
     public string WorkSchedule { get; set; } = null!;
 
-    public virtual StaffRole? IdStaffRoleNavigation { get; set; }
+    public virtual StaffRole IdStaffRoleNavigation { get; set; }
 
     public virtual ICollection<Veterinarian> Veterinarians { get; set; } = new List<Veterinarian>();
 }
