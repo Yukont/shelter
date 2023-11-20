@@ -8,5 +8,8 @@ namespace BLL.DTO
 {
     internal class UsersGenderDTO
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; } = null!;
     }
 }
