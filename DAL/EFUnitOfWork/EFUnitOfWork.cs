@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL.EFUnitOfWork
 {
-    internal class EFUnitOfWork : IUnitOfWork
+    public class EFUnitOfWork : IUnitOfWork
     {
         private ShelterContext db;
         private AdoptionApplicationRepository adoptionApplicationRepository;
