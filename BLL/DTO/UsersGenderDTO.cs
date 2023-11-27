@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    internal class UsersGenderDTO
+    public class UsersGenderDTO
     {
         public int Id { get; set; }
 

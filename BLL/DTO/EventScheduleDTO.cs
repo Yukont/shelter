@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    internal class EventScheduleDTO
+    public class EventScheduleDTO
     {
         public int Id { get; set; }
 

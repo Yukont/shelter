@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    internal class AdoptionApplicationDTO
+    public class AdoptionApplicationDTO
     {
         public int Id { get; set; }
 
