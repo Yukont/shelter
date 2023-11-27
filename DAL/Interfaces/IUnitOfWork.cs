@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    internal interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         AdoptionApplicationRepository AdoptionApplication { get; }
         AdoptionStatusRepository AdoptionStatus { get; }
