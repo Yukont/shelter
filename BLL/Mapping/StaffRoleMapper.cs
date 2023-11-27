@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class StaffRoleMapper : BaseMapper<StaffRole, StaffRoleDTO>
+    public class StaffRoleMapper : BaseMapper<StaffRole, StaffRoleDTO>
     {
     }
 }

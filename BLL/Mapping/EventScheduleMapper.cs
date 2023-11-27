@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class EventScheduleMapper : BaseMapper<EventSchedule, EventScheduleDTO>
+    public class EventScheduleMapper : BaseMapper<EventSchedule, EventScheduleDTO>
     {
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class ShelterInformationMapper : BaseMapper<ShelterInformation, ShelterInformationDTO>
+    public class ShelterInformationMapper : BaseMapper<ShelterInformation, ShelterInformationDTO>
     {
     }
 }

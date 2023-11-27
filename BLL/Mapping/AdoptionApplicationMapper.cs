@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class AdoptionApplicationMapper : BaseMapper<AdoptionApplication, AdoptionApplicationDTO>
+    public class AdoptionApplicationMapper : BaseMapper<AdoptionApplication, AdoptionApplicationDTO>
     {
     }
 }

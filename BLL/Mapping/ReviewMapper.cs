@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class ReviewMapper : BaseMapper<Review, ReviewDTO>
+    public class ReviewMapper : BaseMapper<Review, ReviewDTO>
     {
     }
 }

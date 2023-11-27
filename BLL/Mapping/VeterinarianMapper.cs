@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class VeterinarianMapper : BaseMapper<Veterinarian, VeterinarianDTO>
+    public class VeterinarianMapper : BaseMapper<Veterinarian, VeterinarianDTO>
     {
     }
 }

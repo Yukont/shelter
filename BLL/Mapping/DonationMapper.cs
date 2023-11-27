@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class DonationMapper : BaseMapper<Donation, DonationDTO>
+    public class DonationMapper : BaseMapper<Donation, DonationDTO>
     {
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class GenderMapper : BaseMapper<Gender, GenderDTO>
+    public class GenderMapper : BaseMapper<Gender, GenderDTO>
     {
     }
 }

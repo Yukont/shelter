@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class ClinicMapper : BaseMapper<Clinic, ClinicDTO>
+    public class ClinicMapper : BaseMapper<Clinic, ClinicDTO>
     {
     }
 }

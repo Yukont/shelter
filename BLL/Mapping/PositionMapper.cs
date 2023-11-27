@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class PositionMapper : BaseMapper<Position, PositionDTO>
+    public class PositionMapper : BaseMapper<Position, PositionDTO>
     {
     }
 }

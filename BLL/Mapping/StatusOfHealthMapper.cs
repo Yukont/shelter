@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class StatusOfHealthMapper : BaseMapper<StatusOfHealth, StatusOfHealthDTO>
+    public class StatusOfHealthMapper : BaseMapper<StatusOfHealth, StatusOfHealthDTO>
     {
     }
 }

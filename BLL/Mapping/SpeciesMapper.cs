@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class SpeciesMapper : BaseMapper<Species, SpeciesDTO>
+    public class SpeciesMapper : BaseMapper<Species, SpeciesDTO>
     {
     }
 }

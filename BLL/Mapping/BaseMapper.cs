@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class BaseMapper<TSource, TDestination> : Profile
+    public class BaseMapper<TSource, TDestination> : Profile
     {
         public BaseMapper()
         {

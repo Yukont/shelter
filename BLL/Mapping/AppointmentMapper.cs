@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class AppointmentMapper : BaseMapper<Appointment, AppointmentDTO>
+    public class AppointmentMapper : BaseMapper<Appointment, AppointmentDTO>
     {
     }
 }

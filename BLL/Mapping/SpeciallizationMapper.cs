@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Mapping
 {
-    internal class SpeciallizationMapper : BaseMapper<Speciallization, SpeciallizationDTO>
+    public class SpeciallizationMapper : BaseMapper<Speciallization, SpeciallizationDTO>
     {
     }
 }
