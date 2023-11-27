@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class AnimalRepository : BaseRepository<Animal>
+    public class AnimalRepository : BaseRepository<Animal>
     {
         internal AnimalRepository(DbContext dbContext) : base(dbContext)
         {

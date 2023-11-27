@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class ShelterInformationRepository : BaseRepository<ShelterInformation>
+    public class ShelterInformationRepository : BaseRepository<ShelterInformation>
     {
         internal ShelterInformationRepository(DbContext dbContext) : base(dbContext)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class AppointmentRepository : BaseRepository<Appointment>
+    public class AppointmentRepository : BaseRepository<Appointment>
     {
         internal AppointmentRepository(DbContext dbContext) : base(dbContext)
         {

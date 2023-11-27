@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class StaffRepository : BaseRepository<Staff>
+    public class StaffRepository : BaseRepository<Staff>
     {
         internal StaffRepository(DbContext dbContext) : base(dbContext)
         {

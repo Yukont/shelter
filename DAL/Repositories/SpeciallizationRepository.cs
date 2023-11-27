@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class SpeciallizationRepository : BaseRepository<Speciallization>
+    public class SpeciallizationRepository : BaseRepository<Speciallization>
     {
         internal SpeciallizationRepository(DbContext dbContext) : base(dbContext)
         {

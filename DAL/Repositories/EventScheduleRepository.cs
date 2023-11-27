@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class EventScheduleRepository : BaseRepository<EventSchedule>
+    public class EventScheduleRepository : BaseRepository<EventSchedule>
     {
         internal EventScheduleRepository(DbContext dbContext) : base(dbContext)
         {

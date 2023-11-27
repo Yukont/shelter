@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class UserRoleRepository : BaseRepository<UserRole>
+    public class UserRoleRepository : BaseRepository<UserRole>
     {
         internal UserRoleRepository(DbContext dbContext) : base(dbContext)
         {

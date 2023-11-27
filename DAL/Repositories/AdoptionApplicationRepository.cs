@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class AdoptionApplicationRepository : BaseRepository<AdoptionApplication>
+    public class AdoptionApplicationRepository : BaseRepository<AdoptionApplication>
     {
         internal AdoptionApplicationRepository(DbContext dbContext) : base(dbContext)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class ReviewRepository : BaseRepository<Review>
+    public class ReviewRepository : BaseRepository<Review>
     {
         internal ReviewRepository(DbContext dbContext) : base(dbContext)
         {

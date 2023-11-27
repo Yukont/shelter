@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    internal class GenderRepository : BaseRepository<Gender>
+    public class GenderRepository : BaseRepository<Gender>
     {
         internal GenderRepository(DbContext dbContext) : base(dbContext)
         {
