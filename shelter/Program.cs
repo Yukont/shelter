@@ -8,9 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ShelterContext>(options => options.UseSqlServer(connection));
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
