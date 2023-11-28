@@ -1,7 +1,24 @@
+using BLL.Interfaces;
+using BLL.Services;
+using DAL.Interfaces;
+using DAL.EFUnitOfWork;
+using DAL.EF;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ShelterContext>(options => options.UseSqlServer(connection));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.AdoptionStatusMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.AdoptionStatusMapper));
+
+builder.Services.AddScoped<IAdoptionStatusService, AdoptionStatusService>();
+builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
 var app = builder.Build();
 
