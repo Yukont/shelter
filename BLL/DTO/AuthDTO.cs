@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    public class StaffRoleDTO
+    public class AuthDTO
     {
         public int Id { get; set; }
 
-        public string Name { get; set; } = null!;
+        public string Login { get; set; } = null!;
+
+        public string Password { get; set; } = null!;
     }
 }

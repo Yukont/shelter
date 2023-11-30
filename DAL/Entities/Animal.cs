@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace shelter;
+namespace DAL.Entities;
 
 public partial class Animal
 {
@@ -21,7 +21,7 @@ public partial class Animal
 
     public int IdAnimalStatus { get; set; }
 
-    public string DateOf { get; set; } = null!;
+    public DateTime DateOf { get; set; }
 
     public int IdStatusOfHealth { get; set; }
 

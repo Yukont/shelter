@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace DAL.Entities;
 
-public partial class UserRole
+public partial class Auth
 {
     public int Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string Login { get; set; } = null!;
+
+    public string Password { get; set; } = null!;
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 

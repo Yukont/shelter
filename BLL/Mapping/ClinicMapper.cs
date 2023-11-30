@@ -1,5 +1,5 @@
 ﻿using BLL.DTO;
-using shelter;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

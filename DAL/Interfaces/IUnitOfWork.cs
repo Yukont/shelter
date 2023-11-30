@@ -24,7 +24,7 @@ namespace DAL.Interfaces
         SpeciallizationRepository Speciallization { get; }
         SpeciesRepository Species { get; }
         StaffRepository Staff { get; }
-        StaffRoleRepository StaffRole { get; }
+        AuthRepository Auth { get; }
         StatusOfHealthRepository StatusOfHealth { get; }
         UserRepository User { get; }
         UserRoleRepository UserRole { get; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace shelter;
+namespace DAL.Entities;
 
 public partial class User
 {
@@ -21,13 +21,17 @@ public partial class User
 
     public string Phone { get; set; } = null!;
 
+    public int IdAuth { get; set; }
+
     public virtual ICollection<AdoptionApplication> AdoptionApplications { get; set; } = new List<AdoptionApplication>();
 
     public virtual ICollection<Donation> Donations { get; set; } = new List<Donation>();
 
+    public virtual Auth IdAuthNavigation { get; set; } = null!;
+
     public virtual UsersGender IdUserGenderNavigation { get; set; } = null!;
 
-    public virtual UserRole IdUserRoleNavigation { get; set; }
+    public virtual UserRole IdUserRoleNavigation { get; set; } = null!;
 
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

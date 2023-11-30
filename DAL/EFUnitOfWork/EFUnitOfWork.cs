@@ -2,7 +2,7 @@
 using DAL.Interfaces;
 using DAL.Repositories;
 using Microsoft.Extensions.Configuration;
-using shelter;
+using DAL.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace DAL.EFUnitOfWork
         private SpeciallizationRepository speciallizationRepository;
         private SpeciesRepository speciesRepository;
         private StaffRepository staffRepository;
-        private StaffRoleRepository staffRoleRepository;
+        private AuthRepository authRepository;
         private StatusOfHealthRepository statusOfHealthRepository;
         private UserRepository userRepository;
         private UserRoleRepository userRoleRepository;
@@ -52,7 +52,7 @@ namespace DAL.EFUnitOfWork
 
         public AppointmentRepository Appointment => appointmentRepository ??= new AppointmentRepository(db);
 
-        public  ClinicRepository Clinic => clinicRepository ??= new ClinicRepository(db);
+        public ClinicRepository Clinic => clinicRepository ??= new ClinicRepository(db);
 
         public DonationRepository Donation => donationRepository ??= new DonationRepository(db);
 
@@ -72,7 +72,7 @@ namespace DAL.EFUnitOfWork
 
         public StaffRepository Staff => staffRepository ??= new StaffRepository(db);
 
-        public StaffRoleRepository StaffRole => staffRoleRepository ??= new StaffRoleRepository(db);
+        public AuthRepository Auth => authRepository ??= new AuthRepository(db);
 
         public StatusOfHealthRepository StatusOfHealth => statusOfHealthRepository ??= new StatusOfHealthRepository(db);
 

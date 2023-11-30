@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace shelter;
+namespace DAL.Entities;
 
 public partial class Review
 {
@@ -9,11 +9,11 @@ public partial class Review
 
     public DateTime DateOf { get; set; }
 
-    public int? IdUser { get; set; }
+    public int IdUser { get; set; }
 
     public int Rating { get; set; }
 
     public string Review1 { get; set; } = null!;
 
-    public virtual User? IdUserNavigation { get; set; }
+    public virtual User IdUserNavigation { get; set; } = null!;
 }

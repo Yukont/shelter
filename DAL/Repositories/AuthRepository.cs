@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class AdoptionStatusRepository : BaseRepository<AdoptionStatus>
+    public class AuthRepository : BaseRepository<Auth>
     {
-        internal AdoptionStatusRepository(DbContext dbContext) : base(dbContext)
+        internal AuthRepository(DbContext dbContext) : base(dbContext)
         {
         }
     }
