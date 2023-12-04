@@ -1,14 +1,9 @@
 ﻿using BLL.DTO;
-using DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using shelter.Models;
 
-namespace BLL.Mapping
+namespace shelter.Mapping
 {
-    internal class SpeciesMapper : BaseMapper<Species, SpeciesDTO>
+    internal class SpeciesMapper : BaseMapper<SpeciesDTO, SpeciesViewModel>
     {
     }
 }
