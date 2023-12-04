@@ -27,5 +27,9 @@ namespace BLL.DTO
         public int Experience { get; set; }
 
         public string Phone { get; set; } = null!;
+
+        public int IdAuth { get; set; }
+
+        public IEnumerable<UsersGenderDTO>? UserGenders { get; set; }
     }
 }

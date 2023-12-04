@@ -3,7 +3,7 @@ using shelter.Models;
 
 namespace shelter.Mapping
 {
-    internal class UserMapper : BaseMapper<UserDTO, UserViewModel>
+    internal class AuthMapper : BaseMapper<AuthDTO, LoginViewModel>
     {
     }
 }
