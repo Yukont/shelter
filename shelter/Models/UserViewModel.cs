@@ -8,10 +8,6 @@ namespace shelter.Models
 
         public string Name { get; set; } = null!;
 
-/*        public int IdUserRole { get; set; }
-
-        public string UserRoleName { get; set; } = null!;*/
-
         public string? Address { get; set; }
 
         public string? Email { get; set; }
@@ -24,7 +20,6 @@ namespace shelter.Models
 
         public string Phone { get; set; } = null!;
 
-        /*public int IdAuth { get; set; }*/
         public IEnumerable<UserGenderViewModel>? UserGenders { get; set; }
     }
 }

@@ -1,0 +1,29 @@
+﻿@model shelter.Models.AnimalStatusIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<p>
+    <a class="nav-link text-dark" asp-action="Create" asp-controller="AnimalStatus">Create New</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th class="actions">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.animalStatusIndexModels)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td class="actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

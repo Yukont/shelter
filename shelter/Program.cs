@@ -27,10 +27,13 @@ builder.Services.AddAutoMapper(typeof(BLL.Mapping.UsersGenderMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.UsersGenderMapper));
 builder.Services.AddAutoMapper(typeof(BLL.Mapping.UserMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.UserMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.AnimalStatusMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.AnimalStatusMapper));
 
 builder.Services.AddScoped<IAdoptionStatusService, AdoptionStatusService>();
 builder.Services.AddScoped<IUserGenderService, UserGenderService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAnimalStatusService, AnimalStatusService>();
 
 builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
