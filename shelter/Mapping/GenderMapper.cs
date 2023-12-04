@@ -1,14 +1,15 @@
 ﻿using BLL.DTO;
 using DAL.Entities;
+using shelter.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Mapping
+namespace shelter.Mapping
 {
-    internal class GenderMapper : BaseMapper<Gender, GenderDTO>
+    internal class GenderMapper : BaseMapper<GenderDTO, GenderViewModel>
     {
     }
 }
