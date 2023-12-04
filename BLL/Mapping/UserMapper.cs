@@ -1,5 +1,5 @@
 ﻿using BLL.DTO;
-using shelter;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +10,10 @@ namespace BLL.Mapping
 {
     public class UserMapper : BaseMapper<User, UserDTO>
     {
+        public UserMapper()
+        {
+            CreateMap<User, UserDTO>()
+                .ForMember(dest => dest.UserGenders, opt => opt.MapFrom(src => src.IdUserGenderNavigation.Name));
+        }   
     }
 }

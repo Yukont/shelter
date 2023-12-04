@@ -1,14 +1,9 @@
 ﻿using BLL.DTO;
-using shelter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using shelter.Models;
 
-namespace BLL.Mapping
+namespace shelter.Mapping
 {
-    internal class UserMapper : BaseMapper<User, UserDTO>
+    internal class UserMapper : BaseMapper<UserDTO, UserViewModel>
     {
     }
 }

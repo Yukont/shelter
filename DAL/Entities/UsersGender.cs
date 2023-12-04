@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace shelter;
+namespace DAL.Entities;
 
 public partial class UsersGender
 {

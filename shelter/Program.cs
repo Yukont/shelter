@@ -2,8 +2,7 @@ using BLL.Interfaces;
 using BLL.Services;
 using DAL.Interfaces;
 using DAL.EFUnitOfWork;
-using DAL.EF;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +10,28 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+            options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        });
+
 builder.Services.AddAutoMapper(typeof(BLL.Mapping.AdoptionStatusMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.AdoptionStatusMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.AuthMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.AuthMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.UserMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.UserMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.UsersGenderMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.UsersGenderMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.UserMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.UserMapper));
 
 builder.Services.AddScoped<IAdoptionStatusService, AdoptionStatusService>();
+builder.Services.AddScoped<IUserGenderService, UserGenderService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
 builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
 var app = builder.Build();
@@ -30,8 +47,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

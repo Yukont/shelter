@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/shelter.styles.css" asp-append-version="true" />
+    <style>
+        .dropdown-menu-group {
+            display: flex;
+            gap: 10px; 
+        }
+        .logout-form {
+            margin-left: auto; 
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,15 +28,115 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AdoptionStatus" asp-action="Index">AdoptionStatus</a>
-                        </li>
+                        
+                        @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <div class = "dropdown-menu-group">
+                                <li class="nav-item">
+                                        <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Наши животные</a>
+                                </li>
+                                    <li class="nav-item">
+                                            <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Сотрудники приюта</a>
+                                    </li>
+                            </div>
+                                <div class = "dropdown-menu-group logout-form">
+                                <li class="nav-item">
+                                        <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Login">Вход</a>
+                                </li>
+                            </div>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("1"))
+                            {
+                                <div class="dropdown-menu-group">
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Заявки
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Заявки</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="AdoptionStatus" asp-action="Index">Статусы заявок</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Животные
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Животные</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Статусы животных</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Гендер животных</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Вид животных</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Статус здоровья животных</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Ветеринары
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Приемы</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Клиники</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Позиция</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Специализация</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Ветеринары</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Пользователи
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Пользователи</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Пол пользователей</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Пожертвования пользователей</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Отзывы пользователей</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Приют
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">События приюта</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Информация о приюте</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Сотрудники
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Сотрудники</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="ControllerName" asp-action="ActionName">Информация о приюте</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                            @if (User.IsInRole("2"))
+                            {
+                                <div class = "dropdown-menu-group">
+                                    <li class="nav-item">
+                                            <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Наши животные</a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Заявки на усыновление</a>
+                                    </li>
+                                    <li class="nav-item">
+                                            <a class="nav-link text-dark btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Сотрудники приюта</a>
+                                    </li>
+                                </div>
+                            }
+                            <div class="logout-form">
+                                <form method="post" asp-controller="Account" asp-action="Logout">
+                                            <input type="submit" value="Выход" class="btn btn-light lo"/>
+                                </form>
+                            </div>
+                        }
                     </ul>
                 </div>
             </div>
@@ -41,7 +150,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - shelter - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - Светлый уголок - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

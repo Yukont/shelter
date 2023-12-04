@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using shelter;
+using DAL.Entities;
 
 namespace DAL.EF;
 
@@ -11,6 +11,7 @@ public partial class ShelterContext : DbContext
     {
         ConnectionString = connectionString;
     }
+
 
     public ShelterContext(DbContextOptions<ShelterContext> options)
         : base(options)
@@ -28,6 +29,8 @@ public partial class ShelterContext : DbContext
     public virtual DbSet<AnimalStatus> AnimalStatuses { get; set; }
 
     public virtual DbSet<Appointment> Appointments { get; set; }
+
+    public virtual DbSet<Auth> Auths { get; set; }
 
     public virtual DbSet<Clinic> Clinics { get; set; }
 
@@ -48,8 +51,6 @@ public partial class ShelterContext : DbContext
     public virtual DbSet<Species> Species { get; set; }
 
     public virtual DbSet<Staff> Staff { get; set; }
-
-    public virtual DbSet<StaffRole> StaffRoles { get; set; }
 
     public virtual DbSet<StatusOfHealth> StatusOfHealths { get; set; }
 
@@ -76,17 +77,14 @@ public partial class ShelterContext : DbContext
 
             entity.HasOne(d => d.IdAnimalNavigation).WithMany(p => p.AdoptionApplications)
                 .HasForeignKey(d => d.IdAnimal)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__adoptionA__IdAni__01142BA1");
 
             entity.HasOne(d => d.IdStatusNavigation).WithMany(p => p.AdoptionApplications)
                 .HasForeignKey(d => d.IdStatus)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__adoptionA__IdSta__02084FDA");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.AdoptionApplications)
                 .HasForeignKey(d => d.IdUser)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__adoptionA__idUse__00200768");
         });
 
@@ -109,7 +107,7 @@ public partial class ShelterContext : DbContext
 
             entity.Property(e => e.Age).HasColumnName("age");
             entity.Property(e => e.DateOf)
-                .HasMaxLength(50)
+                .HasColumnType("date")
                 .HasColumnName("dateOf");
             entity.Property(e => e.DescriptionOfAnimal)
                 .HasMaxLength(50)
@@ -120,7 +118,7 @@ public partial class ShelterContext : DbContext
             entity.Property(e => e.IdStatusOfHealth).HasColumnName("idStatusOfHealth");
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Photo)
-                .HasMaxLength(50)
+                .HasMaxLength(150)
                 .HasColumnName("photo");
 
             entity.HasOne(d => d.IdAnimalStatusNavigation).WithMany(p => p.Animals)
@@ -173,6 +171,14 @@ public partial class ShelterContext : DbContext
                 .HasConstraintName("FK__appointme__IdVet__46B27FE2");
         });
 
+        modelBuilder.Entity<Auth>(entity =>
+        {
+            entity.ToTable("Auth");
+
+            entity.Property(e => e.Login).HasMaxLength(50);
+            entity.Property(e => e.Password).HasMaxLength(150);
+        });
+
         modelBuilder.Entity<Clinic>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__clinic__3214EC07DF105D32");
@@ -211,7 +217,7 @@ public partial class ShelterContext : DbContext
                 .HasColumnType("date")
                 .HasColumnName("dateOf");
             entity.Property(e => e.Descriptions)
-                .HasMaxLength(50)
+                .HasMaxLength(150)
                 .HasColumnName("descriptions");
             entity.Property(e => e.LocationOfEvent)
                 .HasMaxLength(50)
@@ -253,11 +259,12 @@ public partial class ShelterContext : DbContext
                 .HasColumnName("dateOf");
             entity.Property(e => e.IdUser).HasColumnName("idUser");
             entity.Property(e => e.Rating).HasColumnName("rating");
-            entity.Property(e => e.Review1).HasColumnName("review");
+            entity.Property(e => e.Review1)
+                .HasMaxLength(200)
+                .HasColumnName("review");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Reviews)
                 .HasForeignKey(d => d.IdUser)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__review__idUser__7A672E12");
         });
 
@@ -308,21 +315,15 @@ public partial class ShelterContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.WorkSchedule).HasMaxLength(50);
 
-            entity.HasOne(d => d.IdStaffRoleNavigation).WithMany(p => p.Staff)
-                .HasForeignKey(d => d.IdStaffRole)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__staff__IdStaffRo__3E1D39E1");
-        });
+            entity.HasOne(d => d.IdAuthNavigation).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.IdAuth)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_staff_Auth");
 
-        modelBuilder.Entity<StaffRole>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__staffRol__3214EC07F0C754C9");
-
-            entity.ToTable("staffRole");
-
-            entity.HasIndex(e => e.Name, "UQ__staffRol__737584F664A4EBE3").IsUnique();
-
-            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.HasOne(d => d.IdUserRoleNavigation).WithMany(p => p.Staff)
+                .HasForeignKey(d => d.IdUserRole)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_staff_userRole");
         });
 
         modelBuilder.Entity<StatusOfHealth>(entity =>
@@ -350,13 +351,17 @@ public partial class ShelterContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(50);
 
+            entity.HasOne(d => d.IdAuthNavigation).WithMany(p => p.Users)
+                .HasForeignKey(d => d.IdAuth)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_users_Auth");
+
             entity.HasOne(d => d.IdUserGenderNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.IdUserGender)
                 .HasConstraintName("FK__users__idUserGen__74AE54BC");
 
             entity.HasOne(d => d.IdUserRoleNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.IdUserRole)
-                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__users__IdUserRol__73BA3083");
         });
 

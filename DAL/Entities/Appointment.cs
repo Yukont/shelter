@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace shelter;
+namespace DAL.Entities;
 
 public partial class Appointment
 {
@@ -11,11 +11,11 @@ public partial class Appointment
 
     public int IdAnimal { get; set; }
 
-    public string Illnesses { get; set; } = null!;
+    public string? Illnesses { get; set; }
 
     public string Descriptions { get; set; } = null!;
 
-    public string Prescriptions { get; set; } = null!;
+    public string? Prescriptions { get; set; }
 
     public DateTime DateOf { get; set; }
 

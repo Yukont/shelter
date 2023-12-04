@@ -2,12 +2,12 @@
 using BLL.DTO;
 using BLL.Interfaces;
 using DAL.Interfaces;
-using shelter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Entities;
 
 namespace BLL.Services
 {
