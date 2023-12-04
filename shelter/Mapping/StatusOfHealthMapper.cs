@@ -1,15 +1,9 @@
 ﻿using BLL.DTO;
-using DAL.Entities;
-using shelter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using shelter.Models;
 
-namespace BLL.Mapping
+namespace shelter.Mapping
 {
-    internal class StatusOfHealthMapper : BaseMapper<StatusOfHealth, StatusOfHealthDTO>
+    internal class StatusOfHealthMapper : BaseMapper<StatusOfHealthDTO, StatusOfHealthViewModel>
     {
     }
 }
