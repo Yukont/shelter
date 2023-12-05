@@ -1,0 +1,37 @@
+﻿@model shelter.Models.AnimalIndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<p>
+    <a class="nav-link text-dark" asp-action="Create" asp-controller="Animal">Create New</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th class="actions">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div class="container">
+            <h2>Список животных</h2>
+            <div class="row">
+                @foreach (var animal in Model.animalViewModels)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="@animal.Photo" class="card-img-top" alt="Animal Image">
+                            <div class="card-body">
+                                <h5 class="card-title">@animal.Name</h5>
+                                <p class="card-text">@animal.DescriptionOfAnimal</p>
+                                <a href="@Url.Action("Details", "Animal", new { id = animal.Id })" class="btn btn-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </tbody>
+</table>
