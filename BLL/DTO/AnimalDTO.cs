@@ -14,13 +14,13 @@ namespace BLL.DTO
 
         public int IdSpecies { get; set; }
 
-        public string SpeciesName { get; set;} = null!;
+        public string? SpeciesName { get; set;} = null!;
 
         public int Age { get; set; }
 
         public int IdGender { get; set; }
 
-        public string GenderName { get; set; } = null!;
+        public string? GenderName { get; set; } = null!;
 
         public string DescriptionOfAnimal { get; set; } = null!;
 
@@ -28,12 +28,12 @@ namespace BLL.DTO
 
         public int IdAnimalStatus { get; set; }
 
-        public string AnimalStatusName { get; set; } = null!;
+        public string? AnimalStatusName { get; set; } = null!;
 
         public string DateOf { get; set; } = null!;
 
         public int IdStatusOfHealth { get; set; }
 
-        public string StatusOfHealthName { get; set; } = null!;
+        public string? StatusOfHealthName { get; set; } = null!;
     }
 }
