@@ -15,12 +15,13 @@ namespace shelter.Controllers
         IGenderService genderService;
         IAnimalStatusService animalStatusService;
         IStatusOfHealthService statusOfHealthService;
+        IAdoptionApplicationService adoptionApplicationService;
 
         private readonly IMapper mapper;
 
         private readonly IWebHostEnvironment hostingEnvironment;
 
-        public AnimalController(IAnimalService animalService, IMapper mapper, IWebHostEnvironment hostingEnvironment,ISpeciesService speciesService, IGenderService genderService, IAnimalStatusService animalStatusService, IStatusOfHealthService statusOfHealthService)
+        public AnimalController(IAnimalService animalService, IMapper mapper, IWebHostEnvironment hostingEnvironment,ISpeciesService speciesService, IGenderService genderService, IAnimalStatusService animalStatusService, IStatusOfHealthService statusOfHealthService, IAdoptionApplicationService adoptionApplicationService)
         {
             this.animalService = animalService;
             this.mapper = mapper;
@@ -29,6 +30,7 @@ namespace shelter.Controllers
             this.speciesService = speciesService;
             this.animalStatusService = animalStatusService;
             this.statusOfHealthService = statusOfHealthService;
+            this.adoptionApplicationService = adoptionApplicationService;
         }
 
 
@@ -50,6 +52,27 @@ namespace shelter.Controllers
             AnimalViewModel animalViewModel = mapper.Map<AnimalDTO, AnimalViewModel>(animalDTO);
             return View(animalViewModel);
         }
+
+        /*[HttpGet]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateAdoptionApplicationAsync(int AnimalId)
+        {
+            try
+            {
+                AdoptionApplicationDTO adoptionApplicationDTO = new()
+                {
+                    IdUser = int.Parse(User.Identity.Name),
+                    IdStatus = 1,
+                    IdAnimal = AnimalId
+                };
+                await adoptionApplicationService.AddAdoptionApplication(adoptionApplicationDTO);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View();
+            }
+        }*/
 
         // GET: AdoptionStatusController/Create
         public async Task<ActionResult> CreateAsync()

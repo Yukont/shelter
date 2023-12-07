@@ -42,6 +42,8 @@ builder.Services.AddAutoMapper(typeof(BLL.Mapping.AnimalMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.AnimalMapper));
 builder.Services.AddAutoMapper(typeof(BLL.Mapping.DonationMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.DonationMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.AdoptionApplicationMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.AdoptionApplicationMapper));
 
 builder.Services.AddScoped<IAdoptionStatusService, AdoptionStatusService>();
 builder.Services.AddScoped<IUserGenderService, UserGenderService>();
@@ -53,6 +55,7 @@ builder.Services.AddScoped<IGenderService, GenderService>();
 builder.Services.AddScoped<IStatusOfHealthService, StatusOfHealthService>();
 builder.Services.AddScoped<IDonationService, DonationService>();
 builder.Services.AddScoped<IAnimalService, AnimalService>();
+builder.Services.AddScoped<IAdoptionApplicationService, AdoptionApplicationService>();
 
 builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
@@ -61,6 +64,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
+    //app.UseMiddleware<ErrorHandlingMiddleware>();
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();

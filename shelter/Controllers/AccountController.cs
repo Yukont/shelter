@@ -77,7 +77,7 @@ namespace shelter.Controllers
             }
 
             // В случае невалидной модели повторно передайте UserGenders в представление
-            userViewModel.UserGenders = await GetUserGenders(); // Получите список пользовательских полов
+            userViewModel.UserGenders = await GetUserGenders(); 
 
             return View(userViewModel);
         }

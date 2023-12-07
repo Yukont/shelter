@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BLL.DTO
+﻿namespace shelter.Models
 {
-    public class AdoptionApplicationDTO
+    public class AdoptionApplicationViewModel
     {
         public int Id { get; set; }
 
@@ -21,5 +15,10 @@ namespace BLL.DTO
         public int IdStatus { get; set; }
 
         public string StatusName { get; set; } = null!;
+    }
+
+    public class AdoptionApplicationIndexModel
+    {
+        public IEnumerable<AdoptionApplicationViewModel> adoptionApplicationViewModels { get; set; }
     }
 }

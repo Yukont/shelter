@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    internal interface IAdoptionApplicationService : IDisposable
+    public interface IAdoptionApplicationService : IDisposable
     {
         Task AddAdoptionApplication(AdoptionApplicationDTO adoptionApplicationDto);
         Task UpdateAdoptionApplication(AdoptionApplicationDTO adoptionApplicationDto);
