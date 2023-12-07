@@ -1,4 +1,7 @@
-﻿namespace shelter.Models
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+
+namespace shelter.Models
 {
     public class AnimalViewModel
     {
@@ -24,7 +27,8 @@
 
         public string? AnimalStatusName { get; set; }
 
-        public string DateOf { get; set; } = null!;
+        [BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DateOf { get; set; }
 
         public int IdStatusOfHealth { get; set; }
 

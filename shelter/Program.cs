@@ -40,6 +40,8 @@ builder.Services.AddAutoMapper(typeof(BLL.Mapping.StatusOfHealthMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.StatusOfHealthMapper));
 builder.Services.AddAutoMapper(typeof(BLL.Mapping.AnimalMapper));
 builder.Services.AddAutoMapper(typeof(shelter.Mapping.AnimalMapper));
+builder.Services.AddAutoMapper(typeof(BLL.Mapping.DonationMapper));
+builder.Services.AddAutoMapper(typeof(shelter.Mapping.DonationMapper));
 
 builder.Services.AddScoped<IAdoptionStatusService, AdoptionStatusService>();
 builder.Services.AddScoped<IUserGenderService, UserGenderService>();
@@ -49,6 +51,7 @@ builder.Services.AddScoped<IClinicService, ClinicService>();
 builder.Services.AddScoped<ISpeciesService, SpeciesService>();
 builder.Services.AddScoped<IGenderService, GenderService>();
 builder.Services.AddScoped<IStatusOfHealthService, StatusOfHealthService>();
+builder.Services.AddScoped<IDonationService, DonationService>();
 builder.Services.AddScoped<IAnimalService, AnimalService>();
 
 builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();

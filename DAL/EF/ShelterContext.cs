@@ -118,7 +118,7 @@ public partial class ShelterContext : DbContext
             entity.Property(e => e.IdStatusOfHealth).HasColumnName("idStatusOfHealth");
             entity.Property(e => e.Name).HasMaxLength(50);
             entity.Property(e => e.Photo)
-                .HasMaxLength(150)
+                .HasMaxLength(550)
                 .HasColumnName("photo");
 
             entity.HasOne(d => d.IdAnimalStatusNavigation).WithMany(p => p.Animals)

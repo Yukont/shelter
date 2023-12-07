@@ -11,5 +11,9 @@ namespace shelter.Mapping
 {
     internal class AnimalMapper : BaseMapper<AnimalDTO, AnimalViewModel>
     {
+        public AnimalMapper()
+        {
+            
+        }
     }
 }

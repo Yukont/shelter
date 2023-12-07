@@ -25,8 +25,8 @@ namespace BLL.ImgWork
                 // Обрежьте изображение до нужного размера
                 using (var image = Image.Load(filePath))
                 {
-                    int desiredWidth = 500; // Желаемая ширина обрезанного изображения
-                    int desiredHeight = 300; // Желаемая высота обрезанного изображения
+                    int desiredWidth = 900; // Желаемая ширина обрезанного изображения
+                    int desiredHeight = 900; // Желаемая высота обрезанного изображения
 
                     image.Mutate(x => x.Resize(new ResizeOptions
                     {

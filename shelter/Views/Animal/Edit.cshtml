@@ -5,7 +5,7 @@
 
 <h1>Edit</h1>
 
-<h4>Animal</h4>
+<h4>Donation</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,6 +16,62 @@
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdSpecies" class="control-label"></label>
+                <select asp-for="IdSpecies" class="form-control">
+                    @foreach (SpeciesViewModel kind in Model.speciesViewModels)
+                    {
+                        <option value="@kind.Id">@kind.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdGender" class="control-label"></label>
+                <select asp-for="IdGender" class="form-control">
+                    @foreach (GenderViewModel kind in Model.genderViewModels)
+                    {
+                        <option value="@kind.Id">@kind.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionOfAnimal" class="control-label"></label>
+                <input asp-for="DescriptionOfAnimal" class="form-control" />
+                <span asp-validation-for="DescriptionOfAnimal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <input asp-for="Photo" type="file" class="form-control" name="imageFile" accept="image/*" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdAnimalStatus" class="control-label"></label>
+                <select asp-for="IdAnimalStatus" class="form-control">
+                    @foreach (AnimalStatusViewModel kind in Model.animalStatusViewModels)
+                    {
+                        <option value="@kind.Id">@kind.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOf" class="control-label"></label>
+                <input asp-for="DateOf" type="date" class="form-control" />
+                <span asp-validation-for="DateOf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdStatusOfHealth" class="control-label"></label>
+                <select asp-for="IdStatusOfHealth" class="form-control">
+                    @foreach (StatusOfHealthViewModel kind in Model.statusOfHealthViewModels)
+                    {
+                        <option value="@kind.Id">@kind.Name</option>
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Edit" class="btn btn-primary" />

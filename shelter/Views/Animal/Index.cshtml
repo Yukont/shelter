@@ -22,11 +22,18 @@
                 {
                     <div class="col-md-4 mb-3">
                         <div class="card">
-                            <img src="@animal.Photo" class="card-img-top" alt="Animal Image">
+                            @if (!string.IsNullOrEmpty(animal.Photo))
+                            {
+                                <img src="@animal.Photo" class="card-img-top" alt="Animal Image" style="max-width: 100%; height: auto;">
+                            }
+                            else
+                            {
+                                <img src="~/img/avatar2.jpg" class="card-img-top" alt="Animal Image" style="max-width: 100%; height: auto;">
+                            }
                             <div class="card-body">
                                 <h5 class="card-title">@animal.Name</h5>
                                 <p class="card-text">@animal.DescriptionOfAnimal</p>
-                                <a href="@Url.Action("Details", "Animal", new { id = animal.Id })" class="btn btn-primary">Подробнее</a>
+                                <a asp-action="Details" asp-route-id="@animal.Id" class="btn btn-primary">Подробнее</a>
                             </div>
                         </div>
                     </div>

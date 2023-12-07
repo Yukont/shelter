@@ -11,6 +11,6 @@ namespace DAL.Interfaces
     internal interface IAnimalRepository : IRepository<Animal>
     {
         Task<IEnumerable<Animal>> GetAllAsync(params Expression<Func<Animal, object>>[] includes);
-        Task<Animal> GetAsync(int id, params Expression<Func<Animal, object>>[] includes);
+        Task<Animal> GetAsync(int id/*, params Expression<Func<Animal, object>>[] includes*/);
     }
 }

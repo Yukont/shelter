@@ -23,16 +23,16 @@ namespace DAL.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<Animal> GetAsync(int id, params Expression<Func<Animal, object>>[] includes)
+        public async Task<Animal> GetAsync(int id)
         {
-            IQueryable<Animal> query = _dbContext.Set<Animal>();
-
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
-
-            return await query.FirstOrDefaultAsync(a => a.Id == id);
+            return await _dbContext.Set<Animal>()
+                .Include(a => a.IdAnimalStatusNavigation)
+                .Include(a => a.IdGenderNavigation)
+                .Include(a => a.IdSpeciesNavigation)
+                .Include(a => a.IdStatusOfHealthNavigation)
+                .Include(a => a.AdoptionApplications)
+                .Include(a => a.Appointments)
+                .FirstOrDefaultAsync(a => a.Id == id);
         }
     }
 }

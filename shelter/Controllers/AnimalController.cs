@@ -44,9 +44,11 @@ namespace shelter.Controllers
         }
 
         // GET: AdoptionStatusController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            AnimalDTO animalDTO = await animalService.GetAnimalId(id);
+            AnimalViewModel animalViewModel = mapper.Map<AnimalDTO, AnimalViewModel>(animalDTO);
+            return View(animalViewModel);
         }
 
         // GET: AdoptionStatusController/Create
@@ -89,17 +91,27 @@ namespace shelter.Controllers
         {
             AnimalDTO animalDTO = await animalService.GetAnimalId(id);
             AnimalViewModel animalViewModel = mapper.Map<AnimalDTO, AnimalViewModel>(animalDTO);
+            animalViewModel.speciesViewModels = await GetSpecies();
+            animalViewModel.genderViewModels = await GetGenders();
+            animalViewModel.animalStatusViewModels = await GetAnimalStatus();
+            animalViewModel.statusOfHealthViewModels = await GetStatusOfHealth();
+
             return View(animalViewModel);
         }
 
         // POST: AdoptionStatusController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(AnimalViewModel AnimalViewModel)
+        public async Task<ActionResult> Edit(AnimalViewModel AnimalViewModel, IFormFile imageFile)
         {
             try
             {
+                ImgService img = new();
+                string uploadFolder = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+                string imagePath = await img.ProcessImage(imageFile, uploadFolder);
+
                 AnimalDTO animalDTO = mapper.Map<AnimalViewModel, AnimalDTO>(AnimalViewModel);
+                animalDTO.Photo = imagePath;
                 await animalService.UpdateAnimal(animalDTO);
                 return RedirectToAction(nameof(Index));
             }

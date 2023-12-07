@@ -30,7 +30,7 @@ namespace BLL.DTO
 
         public string? AnimalStatusName { get; set; } = null!;
 
-        public string DateOf { get; set; } = null!;
+        public DateTime DateOf { get; set; }
 
         public int IdStatusOfHealth { get; set; }
 
