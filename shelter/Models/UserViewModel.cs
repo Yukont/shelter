@@ -22,4 +22,9 @@ namespace shelter.Models
 
         public IEnumerable<UserGenderViewModel>? UserGenders { get; set; }
     }
+
+    public class UserIndexModel
+    {
+        public IEnumerable<UserViewModel> userViewModels { get; set; }
+    }
 }

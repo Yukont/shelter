@@ -1,0 +1,33 @@
+﻿@model shelter.Models.UserIndexModel
+
+<h1>User List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Experience</th>
+            <th>Phone</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.userViewModels)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Address</td>
+                <td>@user.Email</td>
+                <td>@user.UserGendername</td>
+                <td>@user.Experience</td>
+                <td>@user.Phone</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@user.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

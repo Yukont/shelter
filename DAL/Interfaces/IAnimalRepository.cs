@@ -12,5 +12,6 @@ namespace DAL.Interfaces
     {
         Task<IEnumerable<Animal>> GetAllAsync();
         Task<Animal> GetAsync(int id);
+        Task<IEnumerable<Animal>> GetAllBySpeciesIdAsync(int id);
     }
 }

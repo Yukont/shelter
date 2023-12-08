@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BLL.DTO;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace shelter.Models
@@ -32,8 +33,8 @@ namespace shelter.Models
 
         public int IdStatusOfHealth { get; set; }
 
-        public string? StatusOfHealthName { get; set; } 
-
+        public string? StatusOfHealthName { get; set; }
+        public IEnumerable<AdoptionApplicationViewModel>? adoptionApplicationViewModels { get; set; }
         public IEnumerable<SpeciesViewModel>? speciesViewModels { get; set; }
         public IEnumerable<GenderViewModel>? genderViewModels { get; set; }
         public IEnumerable<AnimalStatusViewModel>? animalStatusViewModels { get; set; }
@@ -44,5 +45,6 @@ namespace shelter.Models
     public class AnimalIndexModel
     {
         public IEnumerable<AnimalViewModel> animalViewModels { get; set; }
+        public IEnumerable<SpeciesViewModel>? speciesViewModels { get; set; }
     }
 }

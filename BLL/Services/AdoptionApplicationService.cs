@@ -52,5 +52,11 @@ namespace BLL.Services
             await unitOfWork.AdoptionApplication.UpdateAsync(adoptionApplication);
             unitOfWork.Save();
         }
+
+        public async Task<IEnumerable<AdoptionApplicationDTO>> GetAllAdoptionApplicationsByAnimalId(int id)
+        {
+            IEnumerable<AdoptionApplication> adoptionApplications = await unitOfWork.AdoptionApplication.GetAllByAnimalIdAsync(id);
+            return mapper.Map<IEnumerable<AdoptionApplication>, IEnumerable<AdoptionApplicationDTO>>(adoptionApplications);
+        }
     }
 }

@@ -65,4 +65,44 @@
             <dd class="col-sm-8">Что бы оставить заявку на усыновление <a asp-controller="Account" asp-action="Login">войдите</a> или <a asp-controller="Account" asp-action="Register" >зарегистрируйтесь</a> в системе</dd>
         }
     </div>
+    @if (Model.adoptionApplicationViewModels.Any())
+    {
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="card-title">Adoption Applications</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var application in Model.adoptionApplicationViewModels)
+                            {
+                                <tr>
+                                    <td>@application.UserName</td>
+                                    <td>@application.StatusName</td>
+                                    <td class="actions">
+                                        <a asp-controller="User" asp-action="Details" asp-route-id="@application.IdUser">User</a> |
+                                        <a asp-controller="AdoptionApplication" asp-action="Edit" asp-route-id="@application.Id">Edit</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="mt-4">
+            <p>No adoption applications for this animal.</p>
+        </div>
+    }
 </div>

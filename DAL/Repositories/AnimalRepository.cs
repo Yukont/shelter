@@ -32,7 +32,21 @@ namespace DAL.Repositories
                 .Include(a => a.IdStatusOfHealthNavigation)
                 .Include(a => a.AdoptionApplications)
                 .Include(a => a.Appointments)
+                .Include(a => a.AdoptionApplications)
                 .FirstOrDefaultAsync(a => a.Id == id);
+        }
+        public async Task<IEnumerable<Animal>> GetAllBySpeciesIdAsync(int id)
+        {
+            return await _dbContext.Set<Animal>()
+                .Include(a => a.IdAnimalStatusNavigation)
+                .Include(a => a.IdGenderNavigation)
+                .Include(a => a.IdSpeciesNavigation)
+                .Include(a => a.IdStatusOfHealthNavigation)
+                .Include(a => a.AdoptionApplications)
+                .Include(a => a.Appointments)
+                .Include(a => a.AdoptionApplications)
+                .Where(a => a.IdSpecies == id)
+                .ToListAsync();
         }
     }
 }

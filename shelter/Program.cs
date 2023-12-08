@@ -56,6 +56,7 @@ builder.Services.AddScoped<IStatusOfHealthService, StatusOfHealthService>();
 builder.Services.AddScoped<IDonationService, DonationService>();
 builder.Services.AddScoped<IAnimalService, AnimalService>();
 builder.Services.AddScoped<IAdoptionApplicationService, AdoptionApplicationService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 

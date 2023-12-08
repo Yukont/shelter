@@ -13,7 +13,9 @@ namespace BLL.Mapping
         public UserMapper()
         {
             CreateMap<User, UserDTO>()
-                .ForMember(dest => dest.UserGenders, opt => opt.MapFrom(src => src.IdUserGenderNavigation.Name));
+                .ForMember(dest => dest.UserGendername, opt => opt.MapFrom(src => src.IdUserGenderNavigation.Name));
+            CreateMap<UserDTO, User>()
+                .ForMember(dest => dest.IdUserGenderNavigation, opt => opt.Ignore());
         }   
     }
 }

@@ -34,6 +34,12 @@ namespace BLL.Services
             return mapper.Map<IEnumerable<Animal>, IEnumerable<AnimalDTO>>(animals);
         }
 
+        public async Task<IEnumerable<AnimalDTO>> GetAllAnimalsByIdSpecies(int id)
+        {
+            IEnumerable<Animal> animals = await unitOfWork.Animal.GetAllBySpeciesIdAsync(id);
+            return mapper.Map<IEnumerable<Animal>, IEnumerable<AnimalDTO>>(animals);
+        }
+
         public async Task<AnimalDTO> GetAnimalId(int animalId)
         {
             Animal animal = await unitOfWork.Animal.GetAsync(animalId);

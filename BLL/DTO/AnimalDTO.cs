@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,5 +36,7 @@ namespace BLL.DTO
         public int IdStatusOfHealth { get; set; }
 
         public string? StatusOfHealthName { get; set; } = null!;
+
+        public IEnumerable<AdoptionApplicationDTO>? adoptionApplicationViewModels { get; set; }
     }
 }

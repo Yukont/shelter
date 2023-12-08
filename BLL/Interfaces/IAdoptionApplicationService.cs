@@ -14,5 +14,6 @@ namespace BLL.Interfaces
         Task RemoveAdoptionApplication(int adoptionApplicationId);
         Task<AdoptionApplicationDTO> GetAdoptionApplicationById(int adoptionApplicationId);
         Task<IEnumerable<AdoptionApplicationDTO>> GetAllAdoptionApplications();
+        Task<IEnumerable<AdoptionApplicationDTO>> GetAllAdoptionApplicationsByAnimalId(int id);
     }
 }

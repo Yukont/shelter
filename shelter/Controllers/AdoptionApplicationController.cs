@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BLL.DTO;
 using BLL.Interfaces;
+using BLL.Services;
 using Microsoft.AspNetCore.Mvc;
 using shelter.Models;
 
@@ -9,13 +10,15 @@ namespace shelter.Controllers
     public class AdoptionApplicationController : Controller
     {
         IAdoptionApplicationService adoptionApplicationService;
+        IAdoptionStatusService adoptionStatusService;
 
         private readonly IMapper mapper;
 
-        public AdoptionApplicationController(IAdoptionApplicationService adoptionApplicationService, IMapper mapper)
+        public AdoptionApplicationController(IAdoptionApplicationService adoptionApplicationService, IMapper mapper, IAdoptionStatusService adoptionStatusService)
         {
             this.adoptionApplicationService = adoptionApplicationService;
             this.mapper = mapper;
+            this.adoptionStatusService = adoptionStatusService;
         }
 
 
@@ -59,25 +62,30 @@ namespace shelter.Controllers
         // GET: AdoptionStatusController/Edit/5
         public async Task<ActionResult> EditAsync(int id)
         {
+            TempData["PreviousUrl"] = Request.Headers["Referer"].ToString();
             AdoptionApplicationDTO adoptionApplicationDTO = await adoptionApplicationService.GetAdoptionApplicationById(id);
             AdoptionApplicationViewModel adoptionApplicationViewModel = mapper.Map<AdoptionApplicationDTO, AdoptionApplicationViewModel>(adoptionApplicationDTO);
+            adoptionApplicationViewModel.adoptionStatusViewModels = await GetAdoptionStatus();
             return View(adoptionApplicationViewModel);
         }
 
         // POST: AdoptionStatusController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(AdoptionApplicationViewModel AdoptionApplicationViewModel)
+        public async Task<ActionResult> Edit(AdoptionApplicationViewModel AdoptionApplicationViewModel, int AnimalId, int UserId)
         {
             try
             {
                 AdoptionApplicationDTO adoptionApplicationDTO = mapper.Map<AdoptionApplicationViewModel, AdoptionApplicationDTO>(AdoptionApplicationViewModel);
+                adoptionApplicationDTO.IdAnimal = AnimalId;
+                adoptionApplicationDTO.IdUser = UserId;
                 await adoptionApplicationService.UpdateAdoptionApplication(adoptionApplicationDTO);
-                return RedirectToAction(nameof(Index));
+                var previousUrl = TempData["PreviousUrl"]?.ToString();
+                return Redirect(previousUrl);
             }
             catch
             {
-                return View();
+                return RedirectToAction("Error", "Home");
             }
         }
 
@@ -86,6 +94,11 @@ namespace shelter.Controllers
         {
             await adoptionApplicationService.RemoveAdoptionApplication(id);
             return RedirectToAction(nameof(Index));
+        }
+        private async Task<IEnumerable<AdoptionStatusViewModel>> GetAdoptionStatus()
+        {
+            IEnumerable<AdoptionStatusDTO> adoptionStatusDTOs = await adoptionStatusService.GetAllAdoptionStatus ();
+            return mapper.Map<IEnumerable<AdoptionStatusDTO>, IEnumerable<AdoptionStatusViewModel>>(adoptionStatusDTOs);
         }
     }
 }

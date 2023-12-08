@@ -9,7 +9,9 @@ namespace DAL.Interfaces
 {
     internal interface IAdoptionApplicationRepository : IRepository<AdoptionApplication>
     {
+        Task<IEnumerable<AdoptionApplication>> GetAllByAnimalIdAsync(int id);
         Task<IEnumerable<AdoptionApplication>> GetAllAsync();
         Task<AdoptionApplication> GetAsync(int id);
+        Task UpdateStatusAsync(AdoptionApplication adoptionApplication);
     }
 }

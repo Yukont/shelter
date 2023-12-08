@@ -20,5 +20,17 @@ namespace DAL.Repositories
             var user = await FindAsync(c => c.IdAuth == IdAuth);
             return user.FirstOrDefault();
         }
+        public async Task<User> GetAsync(int id)
+        {
+            return await _dbContext.Set<User>()
+                .Include(a => a.IdUserGenderNavigation)
+                .FirstOrDefaultAsync(a => a.Id == id);
+        }
+        public async Task<IEnumerable<User>> GetAllAsync()
+        {
+            return await _dbContext.Set<User>()
+                .Include(a => a.IdUserGenderNavigation)
+                .ToListAsync();
+        }
     }
 }

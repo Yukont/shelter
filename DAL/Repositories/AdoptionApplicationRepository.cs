@@ -1,12 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
@@ -32,6 +26,27 @@ namespace DAL.Repositories
                 .Include(a => a.IdUserNavigation)
                 .Include(a => a.IdStatusNavigation)
                 .FirstOrDefaultAsync(a => a.Id == id);
+        }
+
+        public async Task UpdateStatusAsync(AdoptionApplication adoptionApplication)
+        {
+            var entity = await _dbContext.Set<AdoptionApplication>().FindAsync(adoptionApplication.Id);
+
+            if (entity != null)
+            {
+                entity.IdStatus = adoptionApplication.IdStatus;
+                await _dbContext.SaveChangesAsync();
+            }
+
+        }
+        public async Task<IEnumerable<AdoptionApplication>> GetAllByAnimalIdAsync(int id)
+        {
+            return await _dbContext.Set<AdoptionApplication>()
+                .Include(a => a.IdAnimalNavigation)
+                .Include(a => a.IdUserNavigation)
+                .Include(a => a.IdStatusNavigation)
+                .Where(a => a.IdAnimal == id)
+                .ToListAsync();
         }
     }
 }

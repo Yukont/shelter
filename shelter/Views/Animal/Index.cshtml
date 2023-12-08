@@ -7,6 +7,29 @@
     <a class="nav-link text-dark" asp-action="Create" asp-controller="Animal">Create New</a>
 </p>
 
+<div class="container mt-4">
+    <h2>Фильтр</h2>
+    <form method="get" asp-controller="Animal" asp-action="Filter">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="speciesSelect">Вид животного</label>
+                <select class="custom-select" id="speciesSelect" name="id">
+                    <option selected value="">Выбрать все</option>
+                    @foreach (var species in Model.speciesViewModels)
+                    {
+                        <option value="@species.Id">@species.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Применить фильтр</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <table>
     <thead>
         <tr>

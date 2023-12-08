@@ -1,44 +1,32 @@
-﻿@model shelter.Models.AnimalIndexModel
+﻿@model shelter.Models.AdoptionApplicationIndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
-<p>
-    <a class="nav-link text-dark" asp-action="Create" asp-controller="Animal">Create New</a>
-</p>
 
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Animal</th>
+            <th>User</th>
+            <th>Status</th>
             <th class="actions">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <div class="container">
-            <h2>Список животных</h2>
-            <div class="row">
-                @foreach (var animal in Model.animalViewModels)
-                {
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            @if (!string.IsNullOrEmpty(animal.Photo))
-                            {
-                                <img src="@animal.Photo" class="card-img-top" alt="Animal Image" style="max-width: 100%; height: auto;">
-                            }
-                            else
-                            {
-                                <img src="~/img/avatar2.jpg" class="card-img-top" alt="Animal Image" style="max-width: 100%; height: auto;">
-                            }
-                            <div class="card-body">
-                                <h5 class="card-title">@animal.Name</h5>
-                                <p class="card-text">@animal.DescriptionOfAnimal</p>
-                                <a asp-action="Details" asp-route-id="@animal.Id" class="btn btn-primary">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
+        @foreach (var item in Model.adoptionApplicationViewModels)
+        {
+            <tr>
+                <td>@item.AnimalName</td>
+                <td>@item.UserName</td>
+                <td>@item.StatusName</td>
+                <td class="actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-controller="User" asp-action="Details" asp-route-id="@item.IdUser">User</a> |
+                    <a asp-controller="Animal" asp-action="Details" asp-route-id="@item.IdAnimal">Animal</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

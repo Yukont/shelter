@@ -14,5 +14,6 @@ namespace BLL.Interfaces
         Task RemoveAnimal(int animalId);
         Task<AnimalDTO> GetAnimalId(int animalId);
         Task<IEnumerable<AnimalDTO>> GetAllAnimals();
+        Task<IEnumerable<AnimalDTO>> GetAllAnimalsByIdSpecies(int id);
     }
 }

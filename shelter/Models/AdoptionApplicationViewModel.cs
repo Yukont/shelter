@@ -15,6 +15,8 @@
         public int IdStatus { get; set; }
 
         public string StatusName { get; set; } = null!;
+
+        public IEnumerable<AdoptionStatusViewModel>? adoptionStatusViewModels { get; set; }
     }
 
     public class AdoptionApplicationIndexModel

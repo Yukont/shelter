@@ -33,46 +33,41 @@ namespace shelter.Controllers
             this.adoptionApplicationService = adoptionApplicationService;
         }
 
-
         // GET: AdoptionStatusController
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int id = 0)
         {
-            IEnumerable<AnimalDTO> animalDTO = await animalService.GetAllAnimals();
+            IEnumerable<AnimalDTO> animalDTO;
+            if (id == 0)
+            {
+                animalDTO = await animalService.GetAllAnimals();
+            }
+            else
+            {
+                animalDTO = await animalService.GetAllAnimalsByIdSpecies(id);
+            }
 
             AnimalIndexModel model = new();
             model.animalViewModels = mapper.Map<IEnumerable<AnimalDTO>, IEnumerable<AnimalViewModel>>(animalDTO);
+            model.speciesViewModels = await GetSpecies();
 
             return View(model);
         }
+
+        public async Task<ActionResult> Filter(int id)
+        {
+            // Используйте RedirectToAction для перенаправления с параметром id в Index
+            return RedirectToAction("Index", "Animal", new { id });
+        }
+
 
         // GET: AdoptionStatusController/Details/5
         public async Task<ActionResult> Details(int id)
         {
             AnimalDTO animalDTO = await animalService.GetAnimalId(id);
+            animalDTO.adoptionApplicationViewModels = await adoptionApplicationService.GetAllAdoptionApplicationsByAnimalId(animalDTO.Id);
             AnimalViewModel animalViewModel = mapper.Map<AnimalDTO, AnimalViewModel>(animalDTO);
             return View(animalViewModel);
         }
-
-        /*[HttpGet]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAdoptionApplicationAsync(int AnimalId)
-        {
-            try
-            {
-                AdoptionApplicationDTO adoptionApplicationDTO = new()
-                {
-                    IdUser = int.Parse(User.Identity.Name),
-                    IdStatus = 1,
-                    IdAnimal = AnimalId
-                };
-                await adoptionApplicationService.AddAdoptionApplication(adoptionApplicationDTO);
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
-        }*/
 
         // GET: AdoptionStatusController/Create
         public async Task<ActionResult> CreateAsync()
